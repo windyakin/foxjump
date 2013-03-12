@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Arial','メイリオ', 'ＭＳ Ｐゴシック',
+		'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Sans-serif;
+}
+
+.file_select #file {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: -100px;
+	left: -100px;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+.file_select label {
+	overflow: hidden;
+	padding: 0;
+}
+
+.button {
+	display: inline-block;
+	width: 300px;
+	height: 80px;
+	background-image: url('/img/upload_button.png');
+	background-position: left top;
+}
+
+.button:hover {
+	background-position: left bottom;
+}
+
+.failed {
+	margin: 1em 0;
+	padding: .6em;
+	text-align: center;
+	border: 1px solid #cc0000;
+	background: #ffd2d2;
+}
+
+.failed h6 {
+	margin: .2em 0 .5em 0;
+	color: #cc0000;
+	font-size: 1.2em;
+}
+
+.failed p {
+	margin: .2em 0;
+	font-size: .95em;
+}
+
+#alert_legacy {
+	display: none;
+}
+
+#iframe_upload {
+	display: none;
+}

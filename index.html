@@ -6,13 +6,39 @@
  
  <script src="/js/jquery-1.9.1.core.min.js"></script>
  <script src="/js/upload.js"></script>
+ <link rel="stylesheet" href="/css/default.css">
+ 
 </head>
 <body>
 <h1>ファイルアップロードのテスト</h1>
 
+<div class="failed" id="alert_legacy">
+<h6>現在お使いのブラウザーは当アップローダのすべての機能をご利用になれません</h6>
+<p>お使いのブラウザは，<a href="https://developer.mozilla.org/ja/docs/DOM/XMLHttpRequest/FormData">FormData</a>または，<a href="https://developer.mozilla.org/ja/docs/DOM/File">FileAPI</a>に対応していないため，すべての機能をご利用になることはできません。</p>
+<p><a href="http://www.mozilla.jp/firefox/">Firefox</a>や<a href="http://www.google.co.jp/chrome/intl/ja/landing_ie.html">Google Chrome</a>といったモダンブラウザでのご使用をお勧めします。</p>
+</div>
+
+
+<form action="upload.cgi" method="POST" enctype="multipart/form-data" id="upload">
+ <div class="file_select">
+  <input type="file" name="file" id="file">
+   <label for="file">
+    <div class="button"><!-- 画像ボタン用div --></div>
+   </label>
+  </div>
+ <a href="javascript:void(0);" id="submit">ファイルを投稿する</a>
+</form>
+
+<!-- 画面移換なしでアップロードするためのiframe -->
+<iframe name="iframe_upload" id="iframe_upload"></iframe>
+
+<div id="debug"></div>
+
+<hr>
+
 <form action="/upload.cgi" method="POST" enctype="multipart/form-data">
-<input type="file" name="file">
-<input type="submit">
+ <input type="file" name="file">
+ <input type="submit" value="アップロード">
 </form>
 
 </body>

@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Arial','メイリオ', 'ＭＳ Ｐゴシック',
+		'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Sans-serif;
+}
+
+h2 {
+	margin-bottom: .2em;
+	font-size: 1.25em;
+}
+
+p {
+	margin: .3em auto;
+	text-indent: .8em;
+}
+
+ol {
+	margin: 0;
+	padding-left: 4em;
+}

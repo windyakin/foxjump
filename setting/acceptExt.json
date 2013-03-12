@@ -1,0 +1,38 @@
+{
+	"acceptExt": [
+		{"ext": "dbg",	"pwd": true,	"conv": "txt"},
+		
+		{"ext": "txt",	"pwd": false,	"conv": false},
+		
+		{"ext": "bmp",	"pwd": false,	"conv": false},
+		{"ext": "jpg",	"pwd": false,	"conv": false},
+		{"ext": "gif",	"pwd": false,	"conv": false},
+		{"ext": "png",	"pwd": false,	"conv": false},
+		
+		{"ext": "zip",	"pwd": true,	"conv": false},
+		{"ext": "rar",	"pwd": true,	"conv": false},
+		{"ext": "7z",	"pwd": true,	"conv": false},
+		{"ext": "tar",	"pwd": false,	"conv": false},
+		{"ext": "gz",	"pwd": false,	"conv": false},
+		{"ext": "tbz",	"pwd": false,	"conv": false},
+		
+		{"ext": "pl",	"pwd": false,	"conv": "txt"},
+		{"ext": "cgi",	"pwd": false,	"conv": "txt"},
+		{"ext": "php",	"pwd": false,	"conv": "txt"},
+		{"ext": "rb",	"pwd": false,	"conv": "txt"},
+		{"ext": "bat",	"pwd": false,	"conv": "txt"},
+		
+		{"ext": "c",	"pwd": false,	"conv": "txt"},
+		{"ext": "cpp",	"pwd": false,	"conv": "txt"},
+		{"ext": "cs",	"pwd": false,	"conv": "txt"},
+		
+		{"ext": "doc",	"pwd": false,	"conv": false},
+		{"ext": "docx",	"pwd": false,	"conv": false},
+		{"ext": "xls",	"pwd": false,	"conv": false},
+		{"ext": "xlsx",	"pwd": false,	"conv": false},
+		{"ext": "ppt",	"pwd": false,	"conv": false},
+		{"ext": "pptx",	"pwd": false,	"conv": false},
+		
+		{"ext": "pdf",	"pwd": false,	"conv": false}
+	]
+}
