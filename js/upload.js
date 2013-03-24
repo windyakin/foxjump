@@ -16,19 +16,16 @@ $(function(){
 	// ファイルが選択されたら
 	$("#file").change(function(){
 		// 値を取得
-		var val = $(this).val();
-		// ファイル名
-		var name = val.split(/[\\|/]/g).pop();
-		// 拡張子
-		var ext  = name.split(".").pop().toLowerCase();
+		var file = new File($(this).val());
 		
-		//
 		$("#extra_input").slideDown();
 		$("#file_select").slideUp();
 		
+		$("#filename").text(file.getFullName());
 		
 		// 拡張子による必須入力項目のハイライトなど
-		judgeExtension(ext);
+		judgeExtension(file.ext);
+		
 	});
 	
 	// クリアボタンが押されたら
@@ -49,21 +46,36 @@ $(function(){
 	
 });
 
+// ファイル名
+var File = function(fullpass){
+	fullpass.match(/([^\\\/]*?)(\.([^.]+))?$/);
+	this.name = RegExp.$1;
+	this.ext = RegExp.$3;
+};
+File.prototype.getFullName = function(){
+	var fullname = this.name;
+	if (this.ext) fullname += '.' + this.ext;
+	return fullname;
+};
+File.prototype.getShortName = function(){
+	var shortname = this.name;
+};
+
 function judgeExtension(ext)
 {
+	var info = null;
 	// アップロードできる拡張子の一覧表を取得
-	$.getJSON("/setting/acceptExt.json", function(json){
-		var info = null;
+	$.ajax("/setting/acceptExt.json", {
+		type: 'get',
+		dataType: 'json',
+	})
+	// 成功した時
+	.done(function(json){
 		// 対応している拡張子かチェック
 		$.each(json.acceptExt, function(index, val){
 			if (val.ext == ext) info = val;
 		});
-		
-		// 本来はreturnしたいけど非同期通信なのでココに描きます
-		if ( info == null ) {
-			
-		}
-		
+		console.dir(info);
 	});
 }
 

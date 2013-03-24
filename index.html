@@ -5,37 +5,49 @@
  <title>狐のあっぷろーだー</title>
  
  <script src="/js/jquery-1.9.1.core.min.js"></script>
+ <script src="/js/jquery.cookie.min.js"></script>
  <script src="/js/upload.js"></script>
  <link rel="stylesheet" href="/css/default.css">
  
 </head>
 <body>
-<header>
-<h1><a href="http://fox.jeez.jp/"><img src="/img/logo.png" alt="狐のあっぷろーだー"></a></h1>
-</header>
-
-<div class="failed" id="alert_legacy">
-<h6>現在お使いのブラウザーは当アップローダのすべての機能をご利用になれません</h6>
-<p>お使いのブラウザは，<a href="https://developer.mozilla.org/ja/docs/DOM/XMLHttpRequest/FormData">FormData</a>または，<a href="https://developer.mozilla.org/ja/docs/DOM/File">FileAPI</a>に対応していないため，すべての機能をご利用になることはできません。</p>
-<p><a href="http://www.mozilla.jp/firefox/">Firefox</a>や<a href="http://www.google.co.jp/chrome/intl/ja/landing_ie.html">Google Chrome</a>といったモダンブラウザでのご使用をお勧めします。</p>
+<div id="header">
+ <div class="frame">
+  <h1><a href="http://fox.jeez.jp/"><img src="/img/logo.png" width="400" height="50" alt="狐のあっぷろーだー"></a></h1>
+ </div>
 </div>
 
+<hr class="cls">
+
+<div id="content" class="frame">
+
+ <div class="message failed" id="alert_legacy">
+  <h6>現在お使いのブラウザは当アップローダのすべての機能をご利用になれません</h6>
+  <p>現在お使いのブラウザは，<a href="https://developer.mozilla.org/ja/docs/DOM/XMLHttpRequest/FormData">FormData</a>または，<a href="https://developer.mozilla.org/ja/docs/DOM/File">FileAPI</a>に対応していないため，すべての機能をご利用になることはできません。</p>
+  <p><a href="http://www.mozilla.jp/firefox/">Firefox</a>や<a href="http://www.google.co.jp/chrome/intl/ja/landing_ie.html">Google Chrome</a>といったモダンブラウザでのご使用をお勧めします。</p>
+ </div>
+
+ <div class="message info">
+  <p>2013.xx.xx リニューアルしました。これからも狐のあっぷろーだーをよろしくお願いします。</p>
+ </div>
 
 <form action="upload.cgi" method="POST" enctype="multipart/form-data" id="upload">
  <div id="file_select">
   <input type="file" name="file" id="file">
   <label for="file">
-   <span class="button"><!-- 画像用 --></span>
+   <span id="file_button"><!-- 画像用 --></span>
   </label>
  </div>
- <div id="extra_input">
- <table>
-  <tr><td>ファイル名</td><td><span id="filename"></span></td></tr>
-  <tr><td>コメント</td><td><input type="text" name="comment"></td></tr>
-  <tr><td>DLPass</td><td><input type="text" name="dlpass"></td></tr>
-  <tr><td>パスワード(削除用)</td><td><input type="password" name="rmpass"></td></tr>
- </table>
- <a href="javascript:void(0);" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="clear">クリア</a>
+ <div class="message info" id="extra_input">
+  <table>
+   <tr><td>ファイル名</td><td><span id="filename"></span></td></tr>
+   <tr><td>コメント</td><td><input type="text" name="comment"></td></tr>
+   <tr><td>DLPass</td><td><input type="text" name="dlpass"></td></tr>
+   <tr><td>パスワード(削除用)</td><td><input type="password" name="rmpass"></td></tr>
+  </table>
+  <div id="buttons">
+   <a href="javascript:void(0);" class="button" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
+  </div>
  </div>
 </form>
 
@@ -45,6 +57,7 @@
 <div id="debug"></div>
 
 <hr>
+</div>
 
 <form action="/upload.cgi" method="POST" enctype="multipart/form-data">
  <input type="file" name="file">
