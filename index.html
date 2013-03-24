@@ -10,7 +10,9 @@
  
 </head>
 <body>
-<h1>ファイルアップロードのテスト</h1>
+<header>
+<h1><a href="http://fox.jeez.jp/"><img src="/img/logo.png" alt="狐のあっぷろーだー"></a></h1>
+</header>
 
 <div class="failed" id="alert_legacy">
 <h6>現在お使いのブラウザーは当アップローダのすべての機能をご利用になれません</h6>
@@ -20,13 +22,21 @@
 
 
 <form action="upload.cgi" method="POST" enctype="multipart/form-data" id="upload">
- <div class="file_select">
+ <div id="file_select">
   <input type="file" name="file" id="file">
-   <label for="file">
-    <div class="button"><!-- 画像ボタン用div --></div>
-   </label>
-  </div>
- <a href="javascript:void(0);" id="submit">ファイルを投稿する</a>
+  <label for="file">
+   <span class="button"><!-- 画像用 --></span>
+  </label>
+ </div>
+ <div id="extra_input">
+ <table>
+  <tr><td>ファイル名</td><td><span id="filename"></span></td></tr>
+  <tr><td>コメント</td><td><input type="text" name="comment"></td></tr>
+  <tr><td>DLPass</td><td><input type="text" name="dlpass"></td></tr>
+  <tr><td>パスワード(削除用)</td><td><input type="password" name="rmpass"></td></tr>
+ </table>
+ <a href="javascript:void(0);" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="clear">クリア</a>
+ </div>
 </form>
 
 <!-- 画面移換なしでアップロードするためのiframe -->

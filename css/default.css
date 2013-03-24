@@ -5,7 +5,27 @@
 		'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Sans-serif;
 }
 
-.file_select #file {
+body {
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 0 50px;
+	height: 50px;
+	background: #EEE;
+}
+
+header h1 {
+	margin: 0;
+	padding: 0;
+	line-height: 50px;
+}
+
+#file_select #file {
 	width: 0;
 	height: 0;
 	position: absolute;
@@ -16,14 +36,14 @@
 	opacity: 0;
 }
 
-.file_select label {
+#file_select label {
 	overflow: hidden;
 	padding: 0;
 }
 
 .button {
 	display: inline-block;
-	width: 300px;
+	width: 350px;
 	height: 80px;
 	background-image: url('/img/upload_button.png');
 	background-position: left top;
@@ -32,6 +52,13 @@
 .button:hover {
 	background-position: left bottom;
 }
+
+#extra_input {
+	display: none;
+}
+
+
+
 
 .failed {
 	margin: 1em 0;
