@@ -21,7 +21,7 @@ $(function(){
 		$("#extra_input").slideDown();
 		$("#file_select").slideUp();
 		
-		$("#filename").text(file.getFullName());
+		$("#filename").text(file.getShortName(30));
 		
 		// 拡張子による必須入力項目のハイライトなど
 		judgeExtension(file.ext);
@@ -57,9 +57,33 @@ File.prototype.getFullName = function(){
 	if (this.ext) fullname += '.' + this.ext;
 	return fullname;
 };
-File.prototype.getShortName = function(){
+File.prototype.getShortName = function(len){
 	var shortname = this.name;
+	if ( strlen(shortname) > len ) {
+		shortname = mysubstr(shortname, 0, len-2) + '…';
+	}
+	if (this.ext) shortname += '.' + this.ext;
+	return shortname;
 };
+
+var rule = "rule_20130325";
+
+// 文字数カウント
+function strlen(str) {
+	var len = 0;
+	for (var i = 0; i < str.length; i++) {
+		if (str.charCodeAt(i) >= 128) len+=2;
+		else len++;
+	}
+	return len;
+}
+// 文字列切り出し
+function mysubstr(str, off, len)
+{
+	for (var i = 0; i < off; i++) if (str.charCodeAt(i) >= 128) off--;
+	for (var i = off; i < off+len; i++) if (str.charCodeAt(i) >= 128) len--;
+	return str.substr(off, len);
+}
 
 function judgeExtension(ext)
 {
@@ -75,51 +99,99 @@ function judgeExtension(ext)
 		$.each(json.acceptExt, function(index, val){
 			if (val.ext == ext) info = val;
 		});
-		console.dir(info);
+	});
+}
+
+// 利用規約の同意を求める
+function checkRuleAgreement()
+{
+	// 同意していなければ同意を求める
+	$.ajax("/rule.html", {
+		type: 'get',
+		cache: false,
+		dataType: 'html',
+	})
+	.done(function(data){
+		// 利用規約のウィンドウを表示
+		$("#blackout").fadeIn()
+		// 取得した利用規約文を挿入
+		$("#rule_ajax").html($("<div>").append($.parseHTML(data)).find("#rule_text").html());
+		
+		// キャンセルがクリックされたらなかったことにする
+		$(".clear").click(function(){
+			$("#blackout").fadeOut();
+		});
+		$("#rule_submit").click(function(){
+			if ( $("#agree").is(':checked') ) {
+				// クッキーを発行
+				$.cookie(rule, "1");
+				$("#blackout").fadeOut();
+				// クリックしたことにする
+				$("#submit").trigger('click');
+			}
+			else {
+				// 同意するにチェックしてよ～
+				$("#agree_label").css({"color": "#880000", "font-weight": "bold"});
+			}
+		});
 	});
 }
 
 function uploadModernBrowser()
 {
 	$("#submit").click(function(){
-		
-		$("#debug").text("アップロード中です... 0%");
-		
-		// FormDataの生成
-		var fd = new FormData($("#upload")[0]);
-		
-		// ajaxでアップロード
-		$.ajax($("#upload").attr("action"), {
-			type: 'post',
-			processData: false,
-			contentType: false,
-			data: fd,
-			dataType: 'json',
+	
+		// 利用規約に同意していなければ利用規約を表示
+		if ( !$.cookie(rule) ){
+			checkRuleAgreement();
+		}
+		// 利用規約に同意していればアップロード開始
+		else {
 			
-			// アップロード進行状況
-			xhr: function(){
-				XHR = $.ajaxSettings.xhr();
-				if (XHR.upload) {
-					XHR.upload.addEventListener('progress', function(e){
-						progre = parseInt(e.loaded/e.total*100);
-						$("#debug").text("アップロード中です... "+progre+"%");
-					}, false); 
-				}
-				return XHR;
-			},
+			$("#loading").fadeIn();
+			$("#progress_mes").text("アップロード中です... 0%")
 			
-			// 成功した時
-			success: function(data){
-				$("#debug").text("アップロードが完了しました 100%");
+			// FormDataの生成
+			var fd = new FormData($("#upload")[0]);
+			
+			// ajaxでアップロード
+			$.ajax($("#upload").attr("action"), {
+				type: 'post',
+				processData: false,
+				contentType: false,
+				data: fd,
+				dataType: 'json',
+				// アップロード進行状況
+				xhr: function(){
+					XHR = $.ajaxSettings.xhr();
+					if (XHR.upload) {
+						XHR.upload.addEventListener('progress', function(e){
+							progre = parseInt(e.loaded/e.total*100);
+							$("#progress_bar").css("width", progre+"%");
+							$("#progress_mes").text("アップロード中です... "+progre+"%")
+						}, false); 
+					}
+					return XHR;
+				},
+			})
+			.done(function(data){
+				$("#progress_bar").css("width", "100%");
+				$("#progress_mes").text("アップロード完了 100%");
 				console.dir(data);
-				$("#upload")[0].reset();
-			},
-			
-			// 何らかのエラーのとき
-			error: function(data, status, errorThrown){
-				$("#debug").text("ERROR!: "+errorThrown);
-			}
-		});
+			})
+			.fail(function(data, status, errorThrown){
+				$("#progress_bar").text({"color": "#880000", "width": "100%"});
+				$("#progress_mes").text("エラーが発生しました ["+errorThrown+"]");
+			})
+			.always(function(){
+				// 完了画面を１秒のみ表示してフォーム情報をクリア
+				$(".clear").delay(1000).queue(function(next){
+					$("#loading").fadeOut();
+					$(this).trigger('click');
+					next();
+				});
+			});
+		}
 	});
 }
 

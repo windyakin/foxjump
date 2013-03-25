@@ -40,29 +40,43 @@
  </div>
  <div class="message info" id="extra_input">
   <table>
-   <tr><td>ファイル名</td><td><span id="filename"></span></td></tr>
-   <tr><td>コメント</td><td><input type="text" name="comment"></td></tr>
-   <tr><td>DLPass</td><td><input type="text" name="dlpass"></td></tr>
-   <tr><td>パスワード(削除用)</td><td><input type="password" name="rmpass"></td></tr>
+   <tr><td>ファイル名</td>				<td><span id="filename"></span></td></tr>
+   <tr><td>コメント</td>				<td><input type="text" name="comment"></td></tr>
+   <tr><td>ダウンロード用パス</td>		<td><input type="text" name="dlpass"></td></tr>
+   <tr><td>パスワード(削除用)</td>		<td><input type="password" name="rmpass"></td></tr>
   </table>
   <div id="buttons">
-   <a href="javascript:void(0);" class="button" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
+   <a href="javascript:void(0);" class="button submit" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
   </div>
+  
+  <!-- アップロード進行状況 -->
+  <div id="loading">
+   <div id="progress_box"><div id="progress_bar"></div><div id="progress_mes">message</div></div>
+  </div>
+  
  </div>
 </form>
-
-<!-- 画面移換なしでアップロードするためのiframe -->
-<iframe name="iframe_upload" id="iframe_upload"></iframe>
 
 <div id="debug"></div>
 
 <hr>
 </div>
 
-<form action="/upload.cgi" method="POST" enctype="multipart/form-data">
- <input type="file" name="file">
- <input type="submit" value="アップロード">
-</form>
+<!-- 利用規約 -->
+<div id="blackout">
+ <div class="message info" id="rule">
+  <h6>利用規約</h6>
+  <p>アップローダーの利用を継続するには，以下の利用規約に同意してください。</p>
+  <div id="rule_ajax"><!-- ここにajaxで利用規約が挿入されます --></div>
+  <label for="agree" id="agree_label"><input type="checkbox" id="agree">私はこの利用規約に同意します</label>
+  <div id="buttons">
+   <a href="javascript:void(0);" class="button submit" id="rule_submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
+  </div>
+ </div>
+</div>
+
+<!-- 画面移換なしでアップロードするためのiframe -->
+<iframe name="iframe_upload" id="iframe_upload"></iframe>
 
 </body>
 </html>
