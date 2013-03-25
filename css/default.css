@@ -155,18 +155,27 @@ a.button {
 	text-decoration: none;
 }
 
-.submit {
+.submit, .submit:visited {
 	background: #3197ff;
 	color: #FFF;
 	font-weight: bold;
 	text-shadow: 0 -1px 1px #AAA;
 }
 
-.submit:hover {
+.submit:hover, .submit:active {
 	background: #1eb4ff;
 }
 
+.clear, .clear:visited {
+	background: #745656;
+	color: #FFF;
+	font-weight: bold;
+	text-shadow: 0 -1px 1px #AAA;
+}
 
+.clear:hover, .clear:active {
+	background: #7f5f5f;
+}
 
 
 
