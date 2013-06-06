@@ -180,8 +180,8 @@ function uploadModernBrowser()
 				console.dir(data);
 			})
 			.fail(function(data, status, errorThrown){
-				$("#progress_bar").text({"color": "#880000", "width": "100%"});
-				$("#progress_mes").text("エラーが発生しました ["+errorThrown+"]");
+				$("#progress_bar").css({"background": "#880000", "width": "100%"});
+				$("#progress_mes").text("エラーが発生しました ["+status+"]");
 			})
 			.always(function(){
 				// 完了画面を１秒のみ表示してフォーム情報をクリア
@@ -205,7 +205,9 @@ function uploadLegacyBrowser()
 	
 	$("#submit").click(function(){
 		$("#upload").submit();
-		$("#debug").text("アップロード中です...");
+		$("#loading").fadeIn();
+		$("#progress_bar").css({"width": "100%", "background": "url(/img/loading.gif)"});
+		$("#progress_mes").css({"background": "url(/img/alpha.png)"}).text("アップロード中です...");
 		return false;
 	});
 	
@@ -214,8 +216,13 @@ function uploadLegacyBrowser()
 			// 戻り値をjsonとして扱う
 			var data = $.parseJSON($("#iframe_upload").contents().text());
 			console.dir(data);
-			$("#debug").text("アップロードが完了しました");
-			$("#upload")[0].reset();
+			$("#progress_bar").css({"background": ""});
+			$("#progress_mes").css({"background": ""}).text("アップロード完了");
+			$(".clear").delay(1000).queue(function(next){
+				$("#loading").fadeOut();
+				$(this).trigger('click');
+				next();
+			});
 		});
 	});
 }
