@@ -166,6 +166,20 @@ a.button {
 	background: #1eb4ff;
 }
 
+/* ================================================================================ */
+#file_list {
+	width: 100%;
+	font-size: .94em;
+}
+
+#file_list tr:nth-child(odd) {
+	background: #efefef;
+}
+
+#file_list tr:nth-child(even) {
+	background: #dfdfdf;
+}
+
 .clear, .clear:visited {
 	background: #745656;
 	color: #FFF;
