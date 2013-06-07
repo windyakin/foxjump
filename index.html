@@ -37,6 +37,12 @@
   <label for="file">
    <span id="file_button"><!-- 画像用 --></span>
   </label>
+  
+  <div class="message info" id="uploader_info">
+  </div>
+  
+  <hr class="cls">
+  
  </div>
  <div class="message info" id="extra_input">
   <table>
@@ -58,9 +64,25 @@
 </form>
 
 <table id="file_list">
- <tr><th>File</th><th>Comment</th><th>Size</th><th>Date</th></tr>
- <tr><td><a href="#">Fox_5734.tar.gz</a><img src="/img/lock.png" alt="lock"></td><td>素晴らしいファイルだよおおおおおおおおおおおおお</td><td>810KB</td><td>2013/06/05(水) 16:00:17</td></tr>
- <tr><td colspan="4" class="detail">MIME: application/zip OriginName: eop130605.zip</td></tr>
+ <!-- 見出し -->
+ <thead><tr><th>File</th><th>Comment</th><th>Size</th><th>Date</th></tr></thead>
+ 
+ <tr class="summary"><td><a href="#">Fox_5734.tar.gz</a><img src="/img/lock.png" alt="lock"></td><td>素晴らしいファイルだよおおおおおおおおおおおおお</td><td>810KB</td><td>2013/06/05(水) 16:00:17</td></tr>
+ <tr class="detail">
+  <td colspan="4">
+   <table>
+    <tr><th>MIME</th><td>application/zip</td><th>Name</th><td> eop130605.zip</td><th>Del</th><td><input type="password" class="rmpass"><input type="submit" value="del" class="delbutton"></td></tr>
+    </table>
+  </td>
+ </tr>
+ <tr class="summary"><td><a href="#">Fox_5734.zip</a><img src="/img/lock.png" alt="lock"></td><td>短い</td><td>810KB</td><td>2013/06/05(水) 16:00:17</td></tr>
+ <tr class="detail">
+  <td colspan="4">
+   <table>
+    <tr><th>MIME</th><td>application/vnd.openxmlformats-officedocument.wordprocessingml.document</td><th>Name</th><td>やはり俺の青春ラブコメはまちがっているあああああああああああああ。.docx</td><th>Del</th><td><input type="password" class="rmpass"><input type="submit" value="del" class="delbutton"></td></tr>
+    </table>
+  </td>
+ </tr>
 </table>
 
 <!-- Fox_5734.zip	[P] FOX	810KB	2013/06/05(水) 16:00:17	application/zip	eop130605.zip -->

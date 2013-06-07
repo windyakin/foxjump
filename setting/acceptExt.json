@@ -26,12 +26,12 @@
 		{"ext": "cpp",	"pwd": false,	"conv": "txt"},
 		{"ext": "cs",	"pwd": false,	"conv": "txt"},
 		
-		{"ext": "doc",	"pwd": false,	"conv": false},
-		{"ext": "docx",	"pwd": false,	"conv": false},
-		{"ext": "xls",	"pwd": false,	"conv": false},
-		{"ext": "xlsx",	"pwd": false,	"conv": false},
-		{"ext": "ppt",	"pwd": false,	"conv": false},
-		{"ext": "pptx",	"pwd": false,	"conv": false},
+		{"ext": "doc",	"pwd": true,	"conv": false},
+		{"ext": "docx",	"pwd": true,	"conv": false},
+		{"ext": "xls",	"pwd": true,	"conv": false},
+		{"ext": "xlsx",	"pwd": true,	"conv": false},
+		{"ext": "ppt",	"pwd": true,	"conv": false},
+		{"ext": "pptx",	"pwd": true,	"conv": false},
 		
 		{"ext": "pdf",	"pwd": false,	"conv": false}
 	]
