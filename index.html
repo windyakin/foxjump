@@ -20,7 +20,8 @@
 <hr class="cls">
 
 <div id="content" class="frame">
-
+ 
+ <!-- レガシーブラウザへの警告 -->
  <div class="message failed" id="alert_legacy">
   <h6>現在お使いのブラウザは当アップローダのすべての機能をご利用になれません</h6>
   <p>現在お使いのブラウザは，<a href="https://developer.mozilla.org/ja/docs/DOM/XMLHttpRequest/FormData">FormData</a>または，<a href="https://developer.mozilla.org/ja/docs/DOM/File">FileAPI</a>に対応していないため，すべての機能をご利用になることはできません。</p>
@@ -46,12 +47,12 @@
  </div>
  <div class="message info" id="extra_input">
   <table>
-   <tr><td>ファイル名</td>				<td><span id="filename"></span></td></tr>
-   <tr><td>コメント</td>				<td><input type="text" name="comment"></td></tr>
-   <tr><td>ダウンロード用パス</td>		<td><input type="text" name="dlpass"></td></tr>
-   <tr><td>パスワード(削除用)</td>		<td><input type="password" name="rmpass"></td></tr>
+   <tr><td>ファイル名</td>				<td><span id="filename"></span></td><td class="explain">ファイル名は一般に公開されます</td></tr>
+   <tr><td>コメント</td>				<td class="explain"><input type="text" name="comment" id="comment"> (省略可)</td><td class="explain">ファイルにコメントを付けることができます(32文字以内)</td></tr>
+   <tr><td>ダウンロードパス</td>		<td class="explain"><input type="text" name="dlpass" id="dlpass"> (<span id="dlpass_text">省略可</span>)</td><td class="explain">ダウンロード用のパスワードです</td></tr>
+   <tr><td>パスワード</td>		<td class="explain"><input type="password" name="rmpass" id="rmpass"> (必須)</td><td class="explain">削除用のパスワードです</td></tr>
   </table>
-  <div id="buttons">
+  <div class="buttons">
    <a href="javascript:void(0);" class="button submit" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
   </div>
   
@@ -67,7 +68,7 @@
  <!-- 見出し -->
  <thead><tr><th>File</th><th>Comment</th><th>Size</th><th>Date</th></tr></thead>
  
- <tr class="summary"><td><a href="#">Fox_5734.tar.gz</a><img src="/img/lock.png" alt="lock"></td><td>素晴らしいファイルだよおおおおおおおおおおおおお</td><td>810KB</td><td>2013/06/05(水) 16:00:17</td></tr>
+ <tr class="summary"><td><a href="#">Fox_5734.tar.gz</a><img src="/img/lock.png" alt="lock"></td><td>ああああああああああああああああああああああああああああああああ</td><td>810KB</td><td>2013/06/05(水) 16:00:17</td></tr>
  <tr class="detail">
   <td colspan="4">
    <table>
@@ -89,14 +90,26 @@
 
 </div>
 
+<!-- 拡張子非対応 -->
+<div id="extmes" class="blackout">
+ <div class="message info" id="extmes_box">
+  <h6>拡張子は非対応です</h6>
+  <p>選択されたファイルは当アップローダーではアップロードできません</p>
+  <p>またのご利用をお待ちしております</p>
+  <div class="buttons">
+   <a href="javascript:void(0);" class="button submit" id="ext_mes_ok">OK</a>
+  </div>
+ </div>
+</div>
+
 <!-- 利用規約 -->
-<div id="blackout">
- <div class="message info" id="rule">
+<div id="rule" class="blackout">
+ <div class="message info" id="rule_box">
   <h6>利用規約</h6>
   <p>アップローダーの利用を継続するには，以下の利用規約に同意してください。</p>
   <div id="rule_ajax"><!-- ここにajaxで利用規約が挿入されます --></div>
   <label for="agree" id="agree_label"><input type="checkbox" id="agree">私はこの利用規約に同意します</label>
-  <div id="buttons">
+  <div class="buttons">
    <a href="javascript:void(0);" class="button submit" id="rule_submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
   </div>
  </div>
