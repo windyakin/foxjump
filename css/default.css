@@ -244,13 +244,17 @@ table#file_list {
 	padding: .3em;
 }
 
-#file_list tr:nth-child(odd) {
+/* summary */
+#file_list tr:nth-child(4n+1) td {
 	background: #efefef;
+	border-top: 1px solid #c6c6c6;
 }
 
-#file_list tr:nth-child(even) {
+#file_list tr:nth-child(4n+3) td {
 	background: #dfdfdf;
+	border-top: 1px solid #c6c6c6;
 }
+
 
 #file_list thead tr th {
 	background: #615151;
@@ -288,7 +292,11 @@ table#file_list {
 
 /* === ファイル詳細表示 ========================================================================= */
 #file_list tr.detail {
-	//display: none;
+}
+
+.detail_box {
+	display: none;
+	margin-bottom: 10px;
 }
 
 #file_list tr.detail td {
@@ -299,15 +307,24 @@ table#file_list {
 .detail table {
 	width: 100%;
 	border-collapse: collapse;
+	border-bottom: 1px solid #c6c6c6;
 }
 
 .detail table tr th {
 	width: 6%;
-	background: #c3c3c3;
+	background: #988181;
+	color: #fff;
 }
 
-#file_list tr.detail td table tr td {
-	background: #dbdbdb;
+#file_list tr:nth-child(+4n+2) td table tr td {
+	border-top: 1px solid #dedede;
+	background: #efefef;
+	padding: 2px 3px;
+}
+
+#file_list tr:nth-child(+4n+4) td table tr td {
+	border-top: 1px solid #cdcdcd;
+	background: #dfdfdf;
 	padding: 2px 3px;
 }
 

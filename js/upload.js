@@ -11,6 +11,8 @@ $(function(){
 		});
 	}
 	
+	 showFileDetail();
+	
 	$("#debug").text("ファイルを選択してください");
 	
 	// ファイルが選択されたら
@@ -81,6 +83,16 @@ function mysubstr(str, off, len)
 	for (var i = 0; i < off; i++) if (str.charCodeAt(i) >= 128) off--;
 	for (var i = off; i < off+len; i++) if (str.charCodeAt(i) >= 128) len--;
 	return str.substr(off, len);
+}
+
+// ファイル詳細表示
+function showFileDetail()
+{
+	$("tr.summary").click(function(){
+		var detail = $(this).next().find(".detail_box");
+		// 表示・非表示
+		detail.slideToggle(200);
+	});
 }
 
 // 拡張子による入力フォーム内容の変更
