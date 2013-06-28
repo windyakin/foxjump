@@ -225,27 +225,17 @@ a.button {
 }
 
 /* === 決定ボタン =============================================================================== */
-.submit, .submit:visited {
+.submit, .submit:hover, .submit:active, .submit:visited {
 	background: #3498db;
 	color: #ffffff;
 	font-weight: bold;
 }
 
-.submit:hover, .submit:active {
-	background: #5dade2;
-	color: #ffffff;
-}
-
 /* === フォームクリアボタン ===================================================================== */
-.clear, .clear:visited {
+.clear, .clear:hover, .clear:active, .clear:visited {
 	background: #bdc3c7;
 	color: #ffffff;
 	font-weight: bold;
-}
-
-.clear:hover, .clear:active {
-	background: #cacfd2;
-	color: #ffffff;
 }
 
 /* === ファイルリスト =========================================================================== */

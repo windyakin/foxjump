@@ -44,6 +44,16 @@ $(function(){
 		uploadLegacyBrowser();
 	}
 	
+	// debug code
+	$(".buttons a").hover(
+		function(){
+			$(this).stop().animate({"opacity": 0.7});
+		},
+		function(){
+			$(this).stop().animate({"opacity": 1});
+		}
+	);
+	
 });
 
 // ファイル名
