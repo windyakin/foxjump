@@ -13,13 +13,24 @@ html {
 body {
 	margin: 0;
 	padding: 50px 0 0 0;
-	background: #fafafa;
+	color: #34495e;
+	background: #ffffff;
 }
 
 .frame {
 	width: 976px;
 	margin: auto;
 	padding: 0;
+}
+
+a, a:visited {
+	color: #16a085;
+	text-decoration: underline;
+}
+
+a:hover, a:active {
+	color: #1abc9c;
+	text-decoration: none;
 }
 
 /* === ヘッダー ================================================================================= */
@@ -33,8 +44,8 @@ div#header {
 	margin: 0;
 	padding: 0;
 	height: 50px;
-	background: #404040;
-	box-shadow: 0px 1px 1px 0px #AAA;
+	background: #34495e;
+	box-shadow: 0px 1px 1px 0px #aaaaaa;
 }
 
 div#header h1 {
@@ -68,16 +79,20 @@ div#header ul li a {
 	display: inline-block;
 	text-decoration: none;
 	line-height: 50px;
-	background: #7a7a7a;
-	color: #FFF;
+	color: #ffffff;
 	font-weight: bold;
-	text-shadow: 0 1px 1px #959595;
+}
+
+div#header ul li a:hover,
+div#header ul li a:active {
+	color: #1abc9c;
 }
 
 /* === メッセージボックス ======================================================================= */
 .message {
 	margin: 1em 0;
 	padding: .6em 1em;
+	border-radius: 4px;
 }
 
 .message h6 {
@@ -92,19 +107,23 @@ div#header ul li a {
 
 /* 色分け */
 .info {
-	border: 1px solid #c6c6c6;
-	background: #efefef;
+	background: #ecf0f1;
 }
 
 .failed {
-	border: 1px solid #cc0000;
-	background: #ffd2d2;
+	background: #e74c3c;
+	color: #FFFFFF;
 	text-align: center;
 }
 
-.failed h6 {
-	color: #cc0000;
+.failed a, .failed a:visited {
+	color: #ffffff;
 }
+
+.failed a:hover, .failed a:active {
+	color: #ffffff;
+}
+
 
 /* === ファイルセレクトボタン =================================================================== */
 #file_select #file {
@@ -165,13 +184,13 @@ div#header ul li a {
 
 #extra_input input {
 	margin: 0;
-	padding: .3em;
-	border-radius: .3em;
-	border: 1px solid #d2d2d2;
+	padding: .5em;
+	border-radius: 4px;
+	border: 2px solid #bdc3c7;
 }
 
 #extra_input input:focus {
-	box-shadow: 0px 0px 1px 1px #62d2e8;
+	border: 2px solid #1abc9c;
 }
 
 #extra_input input#comment {
@@ -191,7 +210,7 @@ div#header ul li a {
 	font-size: .9em;
 }
 
-/* === ファイル投稿ボタン ======================================================================= */
+/* === ボタン基本設定 =========================================================================== */
 .buttons {
 	margin-top: 1em;
 	text-align: center;
@@ -201,31 +220,32 @@ a.button {
 	display: inline-block;
 	margin: 0 1em;
 	padding: .6em 3em;
-	border: 1px solid #CCC;
+	border-radius: 4px;
 	text-decoration: none;
 }
 
+/* === 決定ボタン =============================================================================== */
 .submit, .submit:visited {
-	background: #3197ff;
-	color: #FFF;
+	background: #3498db;
+	color: #ffffff;
 	font-weight: bold;
-	text-shadow: 0 -1px 1px #AAA;
 }
 
 .submit:hover, .submit:active {
-	background: #1eb4ff;
+	background: #5dade2;
+	color: #ffffff;
 }
 
 /* === フォームクリアボタン ===================================================================== */
 .clear, .clear:visited {
-	background: #745656;
-	color: #FFF;
+	background: #bdc3c7;
+	color: #ffffff;
 	font-weight: bold;
-	text-shadow: 0 -1px 1px #AAA;
 }
 
 .clear:hover, .clear:active {
-	background: #7f5f5f;
+	background: #cacfd2;
+	color: #ffffff;
 }
 
 /* === ファイルリスト =========================================================================== */
@@ -234,7 +254,6 @@ table#file_list {
 	width: 100%;
 	font-size: .94em;
 	border-collapse: collapse;
-	border: 1px solid #c6c6c6;
 }
 
 #file_list td {
@@ -246,19 +265,17 @@ table#file_list {
 
 /* summary */
 #file_list tr:nth-child(4n+1) td {
-	background: #efefef;
-	border-top: 1px solid #c6c6c6;
+	background: #ecf0f1;
 }
 
 #file_list tr:nth-child(4n+3) td {
-	background: #dfdfdf;
-	border-top: 1px solid #c6c6c6;
+	background: #bdc3c7;
 }
 
 
 #file_list thead tr th {
-	background: #615151;
-	color: #FFF;
+	background: #7f8c8d;
+	color: #ffffff;
 }
 
 #file_list td img {
@@ -307,23 +324,20 @@ table#file_list {
 .detail table {
 	width: 100%;
 	border-collapse: collapse;
-	border-bottom: 1px solid #c6c6c6;
 }
 
 .detail table tr th {
 	width: 6%;
-	background: #988181;
+	background: #95a5a6;
 	color: #fff;
 }
 
 #file_list tr:nth-child(+4n+2) td table tr td {
-	border-top: 1px solid #dedede;
 	background: #efefef;
 	padding: 2px 3px;
 }
 
 #file_list tr:nth-child(+4n+4) td table tr td {
-	border-top: 1px solid #cdcdcd;
 	background: #dfdfdf;
 	padding: 2px 3px;
 }
@@ -359,8 +373,8 @@ table#file_list {
 	background: rgba(0, 0, 0, 0.6);
 }
 
-/* === 拡張子非対応 ============================================================================= */
-#extmes_box {
+/* === エラーメッセージ ========================================================================= */
+#errmes_box {
 	display: block;
 	position: absolute;
 	top: 50%;
@@ -427,6 +441,7 @@ table#file_list {
 	width: 100%;
 	height: 100%;
 	text-align: center;
+	border-radius: 4px;
 	background: rgba(0, 0, 0, 0.7);
 }
 
@@ -437,13 +452,15 @@ table#file_list {
 	top: 50%;
 	left: 50%;
 	margin: -20px 0 0 -300px;
-	background: #9a9a9a;
+	border-radius: 4px;
+	background: #bdc3c7;
 }
 
 #progress_bar {
 	width: 0;
 	height: 100%;
-	background: #9ce527;
+	border-radius: 4px;
+	background: #2ecc71;
 }
 
 #progress_mes {

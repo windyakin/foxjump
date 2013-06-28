@@ -11,7 +11,7 @@ $(function(){
 		});
 	}
 	
-	 showFileDetail();
+	showFileDetail();
 	
 	$("#debug").text("ファイルを選択してください");
 	
@@ -108,7 +108,7 @@ function judgeExtension(ext)
 	.done(function(json){
 		// 対応している拡張子かチェック
 		$.each(json.acceptExt, function(index, val){
-			if (val.ext == ext) {
+			if (val.ext.toLowerCase() == ext.toLowerCase()) {
 				info = val;
 			}
 		});
@@ -135,9 +135,11 @@ function judgeExtension(ext)
 // 対応していない拡張子だった場合のメッセージ表示
 function showExtNoSupportMes()
 {
-	$("#extmes").fadeIn();
-	$("#ext_mes_ok").click(function(){
-		$("#extmes").fadeOut();
+	$("#err_title").text("拡張子が未対応です");
+	$("#err_text").html('<p>選択されたファイルは当アップローダーではアップロードできません</p><p>またのご利用をお待ちしております</p>');
+	$("#errmes").fadeIn();
+	$("#err_mes_ok").click(function(){
+		$("#errmes").fadeOut();
 	});
 }
 
@@ -181,6 +183,10 @@ function uploadModernBrowser()
 	$("#submit").click(function(){
 		
 		// フォームの未入力チェック
+		if (0) {
+			
+			return;
+		}
 		
 		// 利用規約に同意していなければ利用規約を表示
 		if ( !$.cookie(rule) ){
