@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+// 追従
+.fixed_navi {
+	position: fixed;
+	top: 0;
+	margin: 0;
+}
+
+// 追従時のダミー
+#dummy {
+	display: none;
+	height: $s_menu_height;
+	margin: 0;
+}
+
+// Twitterウィジェットローディング
+.twitter-timeline {
+	display: none;
+}
+#tw-loading {
+	display: block;
+	width: 95%;
+	height: 200px;
+	margin: 0 2.5% 6px 2.5%;
+	font-size: 0.6em;
+	line-height: 200px;
+	text-align: center;
+	color: #676767;
+}
+
+// トップへ戻る
+#topscroll {
+	position: fixed;
+	bottom: 10px;
+	right: 20px;
+	text-align: right;
+	img {
+		display: none;
+		@include opacity(0.3);
+	}
+	a {
+		outline: none;
+	}
+}

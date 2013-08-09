@@ -1,0 +1,108 @@
+@charset "UTF-8";
+
+@import "compass";
+@import "compass/css3";
+
+// あーあ
+@import "_twinkle.scss";
+@import "_scalar.scss";
+@import "_color.scss";
+
+#topimg {
+	@include clearfix();
+	width: 100%;
+	height: 400px;
+	margin: 0;
+	padding: 10px 0;
+	text-align: center;
+}
+
+// 新着情報
+#news {
+
+	dl {
+		@include clearfix();
+		margin: 0;
+		padding: .4em 0 .2em 0;
+		border-bottom: 1px dotted #CCC;
+
+		dt {
+			float: left;
+			display: inline-block;
+			width: 70px;
+			margin: .3em 10px .3em 0;
+			padding: .1em 0;
+			color: #FFF;
+			font-size: 0.7em;
+			line-height: 1.4em;
+			text-align: center;
+			text-transform: capitalize;
+
+			&.member {
+				background: $c_category_member;
+			}
+			&.active {
+				background: $c_category_active;
+			}
+			&.blog {
+				background: $c_category_blog
+			}
+			&.product {
+				background: $c_category_product;
+			}
+			&.other {
+				background: $c_category_other;
+			}
+		}
+
+		dd {
+			float: left;
+			position: relative;
+			width: 546px;
+			margin: 0;
+			padding: 0 60px 0 0;
+
+			// 日付
+			span.date {
+				display: block;
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 60px;
+				text-align: right;
+				font-size: .7em;
+				color: #555B62;
+			}
+		}
+	}
+
+	#last {
+		@include clearfix();
+		margin-top: 1em;
+		padding: 0;
+		font-size: 0.85em;
+		#rss-read {
+			float: left;
+			width: 50%;
+			text-align: left;
+		}
+		#whats-new {
+			float: right;
+			width: 50%;
+			text-align: right;
+		}
+	}
+}
+
+// 検索ボックス
+#top-search {
+	text-align: center;
+	form {
+		margin: 0;
+		padding: 0;
+	}
+	input[name="s"] {
+		margin-left: .5em;
+		width: 200px;
+	}
+}

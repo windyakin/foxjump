@@ -1,0 +1,487 @@
+@charset "UTF-8";
+
+* {
+	font-family: 'Arial','メイリオ','ＭＳ Ｐゴシック',
+		'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Sans-serif;
+	line-height: 1.4em;
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	margin: 0;
+	padding: 50px 0 0 0;
+	color: #34495e;
+	background: #ffffff;
+}
+
+.frame {
+	width: 976px;
+	margin: auto;
+	padding: 0;
+}
+
+a, a:visited {
+	color: #16a085;
+	text-decoration: underline;
+}
+
+a:hover, a:active {
+	color: #1abc9c;
+	text-decoration: none;
+}
+
+/* === ヘッダー ================================================================================= */
+div#header {
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	height: 50px;
+	background: #34495e;
+	box-shadow: 0px 1px 1px 0px #aaaaaa;
+}
+
+div#header h1 {
+	float: left;
+	margin: 0;
+	padding: 0;
+}
+
+div#header img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+div#header ul {
+	float: right;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+div#header ul li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+div#header ul li a {
+	margin: 0;
+	padding: 0 1em;
+	display: inline-block;
+	text-decoration: none;
+	line-height: 50px;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+div#header ul li a:hover,
+div#header ul li a:active {
+	color: #1abc9c;
+}
+
+/* === メッセージボックス ======================================================================= */
+.message {
+	margin: 1em 0;
+	padding: .6em 1em;
+	border-radius: 4px;
+}
+
+.message h6 {
+	margin: .2em 0 .5em 0;
+	font-size: 1.2em;
+}
+
+.message p {
+	margin: .2em 0;
+	font-size: .95em;
+}
+
+/* 色分け */
+.info {
+	background: #ecf0f1;
+}
+
+.failed {
+	background: #e74c3c;
+	color: #FFFFFF;
+	text-align: center;
+}
+
+.failed a, .failed a:visited {
+	color: #ffffff;
+}
+
+.failed a:hover, .failed a:active {
+	color: #ffffff;
+}
+
+
+/* === ファイルセレクトボタン =================================================================== */
+#file_select #file {
+	width: 0;
+	height: 0;
+	position: absolute;
+	top: -100px;
+	left: -100px;
+	filter: alpha(opacity=0);
+	-moz-opacity: 0;
+	opacity: 0;
+}
+
+#file_select label {
+	overflow: hidden;
+	padding: 0;
+	float: left;
+}
+
+#file_button {
+	display: inline-block;
+	width: 350px;
+	height: 80px;
+	background-image: url('/img/upload_button.png');
+	background-position: left top;
+}
+
+#file_button:hover {
+	background-position: left bottom;
+}
+
+/* === アップローダ情報 ========================================================================= */
+#uploader_info {
+	float: right;
+	margin: 0;
+	width: 570px;
+	height: 59px;
+}
+
+
+/* === ファイル詳細入力欄 ======================================================================= */
+#extra_input {
+	position: relative;
+	//display: none;
+	margin: 0;
+}
+
+#extra_input table {
+}
+
+#extra_input table tr td {
+	padding: .2em .3em;
+}
+
+#filename {
+	font-family: monospace;
+}
+
+#extra_input input {
+	margin: 0;
+	padding: .5em;
+	border-radius: 4px;
+	border: 2px solid #bdc3c7;
+}
+
+#extra_input input:focus {
+	border: 2px solid #1abc9c;
+}
+
+#extra_input input#comment {
+	width: 300px;
+}
+
+#extra_input input#dlpass {
+	width: 150px;
+}
+
+#extra_input input#rmpass {
+	width: 150px;
+}
+
+#extra_input .explain {
+	color: #717171;
+	font-size: .9em;
+}
+
+/* === ボタン基本設定 =========================================================================== */
+.buttons {
+	margin-top: 1em;
+	text-align: center;
+}
+
+a.button {
+	display: inline-block;
+	margin: 0 1em;
+	padding: .6em 3em;
+	border-radius: 4px;
+	text-decoration: none;
+}
+
+/* === 決定ボタン =============================================================================== */
+.submit, .submit:hover, .submit:active, .submit:visited {
+	background: #3498db;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+/* === フォームクリアボタン ===================================================================== */
+.clear, .clear:hover, .clear:active, .clear:visited {
+	background: #bdc3c7;
+	color: #ffffff;
+	font-weight: bold;
+}
+
+/* === ファイルリスト =========================================================================== */
+table#file_list {
+	margin: 1em 0;
+	width: 100%;
+	font-size: .94em;
+	border-collapse: collapse;
+}
+
+#file_list td {
+	padding: .5em .5em;
+}
+#file_list th {
+	padding: .3em;
+}
+
+/* summary */
+#file_list tr:nth-child(4n+1) td {
+	background: #ecf0f1;
+}
+
+#file_list tr:nth-child(4n+3) td {
+	background: #bdc3c7;
+}
+
+
+#file_list thead tr th {
+	background: #7f8c8d;
+	color: #ffffff;
+}
+
+#file_list td img {
+	vertical-align: -2px;
+	padding-left: 5px;
+}
+
+/* File */
+#file_list tr.summary td:nth-child(1) {
+	width: 15%;
+	text-align: left;
+}
+
+/* Comment */
+#file_list tr.summary td:nth-child(2) {
+	text-align: left;
+	overflow: hidden;
+}
+
+/* Size */
+#file_list tr.summary td:nth-child(3) {
+	width: 8%;
+	text-align: right;
+}
+
+/* Date */
+#file_list tr.summary td:nth-child(4) {
+	width: 20%;
+	text-align: center;
+}
+
+/* === ファイル詳細表示 ========================================================================= */
+#file_list tr.detail {
+}
+
+.detail_box {
+	display: none;
+	margin-bottom: 10px;
+}
+
+#file_list tr.detail td {
+	font-size: .9em;
+	padding: 0px;
+}
+
+.detail table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.detail table tr th {
+	width: 6%;
+	background: #95a5a6;
+	color: #fff;
+}
+
+#file_list tr:nth-child(+4n+2) td table tr td {
+	background: #efefef;
+	padding: 2px 3px;
+}
+
+#file_list tr:nth-child(+4n+4) td table tr td {
+	background: #dfdfdf;
+	padding: 2px 3px;
+}
+
+/* mime */
+.detail table tr td:nth-child(2) {
+	width: 35%;
+}
+
+/* name */
+.detail table tr td:nth-child(4) {
+	width: 35%;
+}
+
+/* del */
+.detail table tr td:nth-child(6) {
+	text-align: center;
+}
+
+.detail .rmpass {
+	width: 60px;
+}
+
+/* === 半透明の黒色背景 ========================================================================= */
+.blackout {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 101;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+/* === エラーメッセージ ========================================================================= */
+#errmes_box {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 102;
+	width: 650px;
+	height: 150px;
+	margin: -75px 0 0 -325px;
+	background: #e3e3e3;
+	text-align: center;
+}
+
+/* === 利用規約 ================================================================================= */
+#rule_box {
+	display: block;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 102;
+	width: 650px;
+	height: 400px;
+	margin: -200px 0 0 -325px;
+	background: #e3e3e3;
+	text-align: center;
+}
+
+#rule_ajax {
+	height: 220px;
+	padding: 10px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	border: 1px solid #CCC;
+	background: #FFF;
+	text-align: left;
+}
+
+#rule_ajax h2 {
+	margin-top: 0;
+	margin-bottom: .2em;
+	font-size: 1.25em;
+}
+
+#rule_ajax p {
+	margin: .3em auto;
+	text-indent: .8em;
+}
+
+#rule_ajax ol {
+	margin: 0;
+	padding-left: 4em;
+}
+
+#agree_label {
+	display: block;
+	margin: .6em;
+}
+
+/* === アップロード中のプログレスバー =========================================================== */
+#loading {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	border-radius: 4px;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+#progress_box {
+	position: absolute;
+	width: 600px;
+	height: 40px;
+	top: 50%;
+	left: 50%;
+	margin: -20px 0 0 -300px;
+	border-radius: 4px;
+	background: #bdc3c7;
+}
+
+#progress_bar {
+	width: 0;
+	height: 100%;
+	border-radius: 4px;
+	background: #2ecc71;
+}
+
+#progress_mes {
+	position: absolute;
+	width: 600px;
+	height: 40px;
+	top: 50%;
+	left: 50%;
+	margin: -20px 0 0 -300px;
+	font-weight: bold;
+	color: #FFF;
+	line-height: 40px;
+	text-shadow: 0 -1px 1px #AAA;
+}
+
+/* === clear:both; ============================================================================== */
+.cls {
+	clear: both;
+	visibility: hidden;
+	height: 0;
+	margin: 0;
+	padding: 0;
+	font-size: 0;
+}
+
+/* === レガシーブラウザへの対応 ================================================================= */
+#iframe_upload {
+	display: none;
+}
+
+#alert_legacy {
+	display: none;
+}
+

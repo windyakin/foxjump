@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+// デバッグ用 背景色の設定
+@mixin debug(){
+	background: #CCC;
+}
+
+.col_1, .col_2, .col_3, .col_4, .col_5, .col_6, .col_7, .col_8, .col_9, .col_10, .col_11, .col_12 {
+		@include debug();
+		&:hover {
+		//	@include opacity(0.5);
+		}
+}
+
+div#fakegrid {
+	@include hideSmallScreen();
+	@include clearfix();
+	margin-top: -10px;
+	margin-bottom: 5px;
+	div.col_1 {
+		height: 5px;
+		background: #DC2C61;
+	}
+}
