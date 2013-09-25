@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+
+	<title>狐のあっぷろーだー</title>
+
+	<script src="/js/jquery-1.9.1.core.min.js"></script>
+	<script src="/js/jquery.cookie.min.js"></script>
+	<script src="/js/upload.js"></script>
+
+	<link rel="stylesheet" href="/css/default.css">
+
+</head>
+<body>
+
+<header>
+	<div class="frame">
+		<h1><a href="http://fox.jeez.jp/"><img src="/img/logo.png" width="400" height="50" alt="狐のあっぷろーだー"></a></h1>
+		<ul>
+			<li><a href="#">利用規約</a></li>
+			<li><a href="#">削除依頼</a></li>
+		</ul>
+	</div>
+</header>
+
+<div id="content" class="frame">
+
+	<!-- レガシーブラウザへの警告 -->
+	<div class="message failed" id="alert_legacy">
+		<h6>現在お使いのブラウザは当アップローダのすべての機能をご利用になれません</h6>
+		<p>現在お使いのブラウザは，<a href="https://developer.mozilla.org/ja/docs/DOM/XMLHttpRequest/FormData">FormData</a>または，<a href="https://developer.mozilla.org/ja/docs/DOM/File">FileAPI</a>に対応していないため，すべての機能をご利用になることはできません。</p>
+		<p><a href="http://www.mozilla.jp/firefox/">Firefox</a>や<a href="http://www.google.co.jp/chrome/intl/ja/landing_ie.html">Google Chrome</a>といったモダンブラウザでのご使用をお勧めします。</p>
+	</div>
+
+	<div class="message info">
+		<p>2013.xx.xx リニューアルしました。これからも狐のあっぷろーだーをよろしくお願いします。</p>
+	</div>
+	<form action="upload.cgi" method="POST" enctype="multipart/form-data" id="upload">
+		<div id="file_select">
+			<input type="file" name="file" id="file">
+			<label for="file"><span id="file_button"><!-- 画像用 --></span></label>
+			<div class="message info" id="uploader_info"></div>
+		</div>
+
+		<div class="message info" id="extra_input">
+			<table>
+				<tr>
+					<td>ファイル名</td>
+					<td><span id="filename"></span></td>
+					<td class="explain">ファイル名は一般に公開されます</td>
+				</tr>
+				<tr>
+					<td>コメント</td>
+					<td class="explain"><input type="text" name="comment" id="comment"> (省略可)</td>
+					<td class="explain">ファイルにコメントを付けることができます(32文字以内)</td>
+				</tr>
+				<tr>
+					<td>ダウンロードパス</td>
+					<td class="explain"><input type="text" name="dlpass" id="dlpass"> (<span id="dlpass_text">省略可</span>)</td>
+					<td class="explain">ダウンロード用のパスワードです</td>
+				</tr>
+				<tr>
+					<td>パスワード</td>
+					<td class="explain"><input type="password" name="rmpass" id="rmpass"> (必須)</td>
+					<td class="explain">削除用のパスワードです</td>
+				</tr>
+			</table>
+			<div class="buttons">
+				<a href="javascript:void(0);" class="button submit" id="submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
+			</div>
+
+			<!-- アップロード進行状況 -->
+			<div id="loading">
+			<div id="progress_box"><div id="progress_bar"></div><div id="progress_mes">message</div></div>
+		</div>
+
+		</div>
+	</form>
+</div>
+
+
+</body>
+</html>

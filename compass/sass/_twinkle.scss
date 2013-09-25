@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+// リンクの色の設定用
+@mixin setLinkColor($text_color, $bg_color: none, $text_deco: underline, $light: 10%) {
+	color: $text_color;
+	background: $bg_color;
+	text-decoration: $text_deco;
+	outline: none;
+
+	&:link, &:visited {
+		color: $text_color;
+		background: $bg_color;
+		text-decoration: $text_deco;
+		outline: none;
+	}
+
+	&:hover, &:active {
+		color: lighten($text_color, $light);
+		@if $bg_color == none {
+			background: none;
+		} @else {
+			background: lighten($bg_color, $light*0.5);
+		}
+		@if $text_deco == none {
+			text-decoration: underline;
+		} @else {
+			text-decoration: none;
+		}
+		outline: none;
+	}
+}
+
+// 画面サイズの小さいデバイスでは表示しない
+@mixin hideSmallScreen() {
+	@media screen and (max-width: 768px) {
+		display: none;
+	}
+}
+
+@mixin equalHeightBox() {
+	padding-bottom: 32768px;
+	margin-bottom: -32768px;
+	& {
+		overflow: hidden;
+	}
+}
