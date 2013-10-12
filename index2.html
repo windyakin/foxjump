@@ -6,10 +6,6 @@
 
 	<title>狐のあっぷろーだー</title>
 
-	<script src="/js/jquery-1.9.1.core.min.js"></script>
-	<script src="/js/jquery.cookie.min.js"></script>
-	<script src="/js/upload.js"></script>
-
 	<link rel="stylesheet" href="/css/default.css">
 
 </head>
@@ -73,13 +69,46 @@
 
 			<!-- アップロード進行状況 -->
 			<div id="loading">
-			<div id="progress_box"><div id="progress_bar"></div><div id="progress_mes">message</div></div>
-		</div>
+				<div id="progress_box">
+					<div id="progress_bar"></div>
+					<div id="progress_mes">message</div>
+				</div>
+			</div>
 
 		</div>
 	</form>
 </div>
 
+<!-- 利用規約 -->
+<div id="rule" class="blackout">
+	<div class="message info" id="rule_box">
+		<h6>利用規約</h6>
+		<p>アップローダーの利用を継続するには，以下の利用規約に同意してください。</p>
+		<div id="rule_ajax"><!-- ここにajaxで利用規約が挿入されます --></div>
+		<label for="agree" id="agree_label"><input type="checkbox" id="agree">私はこの利用規約に同意します</label>
+		<div class="buttons">
+			<a href="javascript:void(0);" class="button submit" id="rule_submit">ファイルを投稿する</a> <a href="javascript:void(0);" class="button clear">キャンセル</a>
+		</div>
+	</div>
+</div>
+
+<!-- エラーメッセージ -->
+<div id="errmes" class="blackout">
+	<div class="message info" id="errmes_box">
+		<h6 id="err_title">エラー</h6>
+		<div id="err_text"></div>
+		<div class="buttons">
+			<a href="javascript:void(0);" class="button submit" id="err_mes_ok">OK</a>
+		</div>
+	</div>
+</div>
+
+<script src="/js/jquery-1.9.1.core.min.js"></script>
+<script src="/js/jquery.cookie.min.js"></script>
+<script src="/js/upload.js"></script>
+
+<!-- 画面移換なしでアップロードするためのiframe -->
+<iframe name="iframe_upload" id="iframe_upload"></iframe>
 
 </body>
 </html>
