@@ -1,16 +1,14 @@
 @charset "UTF-8";
 
-// グリッドシステムの基本となっているサイズ
-$s_content_width: 978px;
+// 基本サイズ
+$s_content_width: 970px;
 
 // ヘッダーのサイズ
-$s_header_height: 78px;
+$s_header_height: 50px;
 
-// ソーシャルアイコンのサイズ
-$s_socialicon_size: 50px;
+// 角丸具合
+$s_border_radius: 4px;
 
-// メニューの高さ
-$s_menu_height: 50px;
-
-// フッターのサイズ
-$s_footer_height: 180px;
+// ファイルセレクタ関連
+$s_fileselect_width: 350px;
+$s_fileselect_height: 80px;

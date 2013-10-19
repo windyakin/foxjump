@@ -13,8 +13,6 @@ $(function(){
 	
 	showFileDetail();
 	
-	$("#debug").text("ファイルを選択してください");
-	
 	// ファイルが選択されたら
 	$("#file").change(function(){
 		// 値を取得
@@ -47,10 +45,10 @@ $(function(){
 	// debug code
 	$(".buttons a").hover(
 		function(){
-			$(this).stop().animate({"opacity": 0.7});
+			$(this).stop().animate({"opacity": 0.8}, "fast");
 		},
 		function(){
-			$(this).stop().animate({"opacity": 1});
+			$(this).stop().animate({"opacity": 1}, "fast");
 		}
 	);
 	

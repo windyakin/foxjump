@@ -8,6 +8,9 @@
 @import "_scalar.scss";
 @import "_color.scss";
 
+// ダイナミック！
+@import "_dynamic.scss";
+
 * {
 	font-family: 'Arial','メイリオ','ＭＳ Ｐゴシック',
 		'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Sans-serif;
@@ -20,7 +23,7 @@ html {
 
 body {
 	margin: 0;
-	padding: 50px 0 0 0;
+	padding: $s_header_height 0 0 0; // ヘッダーのサイズ分だけ下に
 	height: 100%;
 	background: $c_page_bg;
 }
@@ -34,7 +37,7 @@ img {
 }
 
 .frame {
-	width: 976px;
+	width: $s_content_width;
 	margin: auto;
 	padding: 0;
 }
@@ -50,9 +53,9 @@ header {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-	height: 50px;
+	height: $s_header_height;
 	background: $c_header_bg;
-	box-shadow: 0px 1px 1px 0px #aaaaaa;
+	box-shadow: 0px 1px 1px 0px $c_header_shadow;
 
 	h1 {
 		float: left;
@@ -79,9 +82,9 @@ header {
 				padding: 0 1em;
 				display: inline-block;
 				text-decoration: none;
-				line-height: 50px;
+				line-height: $s_header_height;
 				font-weight: bold;
-				@include setLinkColor(#EEEEEE, none, none);
+				@include setLinkColor($c_header_link, none, none);
 			}
 		}
 	}
@@ -91,7 +94,7 @@ header {
 .message {
 	margin: 1em 0;
 	padding: .6em 1em;
-	border-radius: 4px;
+	border-radius: $s_border_radius;
 	h6 {
 		margin: .2em 0 .5em 0;
 		font-size: 1.2em;
@@ -104,90 +107,105 @@ header {
 		background: $c_info_bg;
 	}
 
-	&.failed {
-		background: $c_failed_bg;
-		color: $c_failed_text;
+	&.warning {
+		background: $c_warning_bg;
+		color: $c_warning_text;
 		text-align: center;
 		a {
-			@include setLinkColor(#FFFFFF);
+			@include setLinkColor($c_warning_link);
 		}
 	}
 }
 
-
-// ファイルセレクト
-#file_select {
-	@include clearfix();
-	#file {
-		width: 0;
-		height: 0;
-		position: absolute;
-		top: -100px;
-		left: -100px;
-		filter: alpha(opacity=0);
-		-moz-opacity: 0;
-		opacity: 0;
-	}
-	label {
-		overflow: hidden;
-		padding: 0;
-		float: left;
-	}
-	// 投稿ボタン
-	#file_button {
-		display: inline-block;
-		width: 350px;
-		height: 80px;
-		background-image: url('/img/upload_button.png');
-		background-position: left top;
-		&:hover {
-			background-position: left bottom;
+// アップロード操作関連(超長い…)
+#upload {
+	// ファイルセレクト(初期状態)
+	#file_select {
+		@include clearfix();
+		// デフォルトのダサいファイルセレクタを消します！
+		#file {
+			width: 0;
+			height: 0;
+			position: absolute;
+			top: -100px;
+			left: -100px;
+			filter: alpha(opacity=0);
+			-moz-opacity: 0;
+			opacity: 0;
+		}
+		// どうも代わりのファイルセレクタです
+		label {
+			overflow: hidden;
+			padding: 0;
+			float: left;
+		}
+		// 投稿ボタン
+		#file_button {
+			display: inline-block;
+			width: $s_fileselect_width;
+			height: $s_fileselect_height;
+			background-image: url('/img/upload_button.png');
+			background-position: left top;
+			&:hover {
+				background-position: left bottom;
+			}
+		}
+		// アップローダー情報
+		#uploader_info {
+			$_s_uploaderinfo_padding: 10px;
+			$_s_uploaderinfo_margin: 10px; // ボタンから左のmargin
+			float: right;
+			margin: 0;
+			padding: $_s_uploaderinfo_padding;
+			// ↓未来の俺は読み取れているのか…
+			width: $s_content_width - $s_fileselect_width - $_s_uploaderinfo_padding * 2 - $_s_uploaderinfo_margin;
+			height: $s_fileselect_height - $_s_uploaderinfo_padding * 2;
 		}
 	}
-}
 
-// アップローダー情報
-#uploader_info {
-	float: right;
-	margin: 0;
-	padding: 10px 20px;
-	width: 570px;
-	height: 60px;
-}
+	// ファイル情報詳細入力
+	#extra_input {
+		position: relative;
+		//display: none;
+		margin: 0;
 
-// ファイル情報詳細入力
-#extra_input {
-	position: relative;
-	//display: none;
-	margin: 0;
-	table {
-		tr {
-			td {
-				padding: .2em .3em;
-				#filename {
-					font-family: monospace;
-				}
-				input {
-					margin: 0;
-					padding: .5em;
-					border-radius: 4px;
-					border: 2px solid #bdc3c7;
-					&:focus {
-						border: 2px solid #1abc9c;
+		table {
+			tr {
+				td {
+					padding: .2em .3em;
+					// ファイル名
+					#filename {
+						font-family: monospace; // 等幅フォントで表示！
 					}
-					&#comment {
-						width: 300px;
+					// 入力欄
+					input {
+						margin: 0;
+						padding: .5em;
+						border-radius: $s_border_radius;
+						border: 1px solid $c_input_border;
+						// 入力欄フォーカス
+						&:focus {
+							border-color: $c_input_border_focus;
+							box-shadow: 0 0 2px $c_input_border_focus;
+						}
+
+						// それぞれのサイズ
+						&#comment {
+							width: 300px;
+						}
+						&#dlpass {
+							width: 150px;
+						}
+						&#rmpass {
+							width: 150px;
+						}
 					}
-					&#dlpass {
-						width: 150px;
+
+					// 入力欄の説明
+					&.explain {
+						color: #717171;
+						font-size: .9em;
 					}
-					&#rmpass {
-						width: 150px;
-					}
-				}
-				&.explain {
-					color: #717171;
-					font-size: .9em;
 				}
 			}
 		}
@@ -202,21 +220,19 @@ header {
 		display: inline-block;
 		margin: 0 1em;
 		padding: .6em 3em;
-		border-radius: 4px;
+		border-radius: $s_border_radius;
 		text-decoration: none;
+		&.submit, &.submit:hover, &.submit:active, &.submit:visited {
+			background: $c_button_submit;
+			color: #ffffff;
+			font-weight: bold;
+		}
+		&.clear, &.clear:hover, &.clear:active, &.clear:visited {
+			background: $c_button_clear;
+			color: #ffffff;
+			font-weight: bold;
+		}
 	}
-}
-
-.submit, .submit:hover, .submit:active, .submit:visited {
-	background: #3498db;
-	color: #ffffff;
-	font-weight: bold;
-}
-
-.clear, .clear:hover, .clear:active, .clear:visited {
-	background: #bdc3c7;
-	color: #ffffff;
-	font-weight: bold;
 }
 
 // プログレスバー
@@ -228,7 +244,7 @@ header {
 	width: 100%;
 	height: 100%;
 	text-align: center;
-	border-radius: 4px;
+	border-radius: $s_border_radius;
 	background: rgba(0, 0, 0, 0.7);
 	#progress_box {
 		position: absolute;
@@ -237,13 +253,13 @@ header {
 		top: 50%;
 		left: 50%;
 		margin: -20px 0 0 -300px;
-		border-radius: 4px;
+		border-radius: $s_border_radius;
 		background: #bdc3c7;
 	}
 	#progress_bar {
 		width: 0;
 		height: 100%;
-		border-radius: 4px;
+		border-radius: $s_border_radius;
 		background: #2ecc71;
 	}
 	#progress_mes {
@@ -312,7 +328,7 @@ header {
 	width: 650px;
 	height: 150px;
 	margin: -75px 0 0 -325px;
-	background: #e3e3e3;
+	background: $c_info_bg;
 	text-align: center;
 }
 

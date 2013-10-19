@@ -24,7 +24,7 @@
 <div id="content" class="frame">
 
 	<!-- レガシーブラウザへの警告 -->
-	<div class="message failed" id="alert_legacy">
+	<div class="message warning" id="alert_legacy">
 		<h6>現在お使いのブラウザは当アップローダのすべての機能をご利用になれません</h6>
 		<p>現在お使いのブラウザは，<a href="https://developer.mozilla.org/ja/docs/DOM/XMLHttpRequest/FormData">FormData</a>または，<a href="https://developer.mozilla.org/ja/docs/DOM/File">FileAPI</a>に対応していないため，すべての機能をご利用になることはできません。</p>
 		<p><a href="http://www.mozilla.jp/firefox/">Firefox</a>や<a href="http://www.google.co.jp/chrome/intl/ja/landing_ie.html">Google Chrome</a>といったモダンブラウザでのご使用をお勧めします。</p>
@@ -33,11 +33,12 @@
 	<div class="message info">
 		<p>2013.xx.xx リニューアルしました。これからも狐のあっぷろーだーをよろしくお願いします。</p>
 	</div>
+
 	<form action="upload.cgi" method="POST" enctype="multipart/form-data" id="upload">
 		<div id="file_select">
 			<input type="file" name="file" id="file">
 			<label for="file"><span id="file_button"><!-- 画像用 --></span></label>
-			<div class="message info" id="uploader_info"></div>
+			<div class="message info" id="uploader_info">この中に何かを入れる</div>
 		</div>
 
 		<div class="message info" id="extra_input">

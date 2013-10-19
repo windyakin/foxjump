@@ -1,4 +1,12 @@
 @charset "UTF-8";
+#alert_legacy {
+  display: none;
+}
+
+#iframe_upload {
+  display: none;
+}
+
 * {
   font-family: 'Arial','メイリオ','ＭＳ Ｐゴシック', 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro', Sans-serif;
   line-height: 1.4em;
@@ -39,7 +47,7 @@ img {
 }
 
 .frame {
-  width: 976px;
+  width: 970px;
   margin: auto;
   padding: 0;
 }
@@ -121,35 +129,35 @@ header ul li a:hover, header ul li a:active {
 .message.info {
   background: #ecf0f1;
 }
-.message.failed {
+.message.warning {
   background: #e74c3c;
   color: white;
   text-align: center;
 }
-.message.failed a {
+.message.warning a {
   color: white;
   background: none;
   text-decoration: underline;
   outline: none;
 }
-.message.failed a:link, .message.failed a:visited {
+.message.warning a:link, .message.warning a:visited {
   color: white;
   background: none;
   text-decoration: underline;
   outline: none;
 }
-.message.failed a:hover, .message.failed a:active {
+.message.warning a:hover, .message.warning a:active {
   color: white;
   background: none;
   text-decoration: none;
   outline: none;
 }
 
-#file_select {
+#upload #file_select {
   overflow: hidden;
   *zoom: 1;
 }
-#file_select #file {
+#upload #file_select #file {
   width: 0;
   height: 0;
   position: absolute;
@@ -159,59 +167,58 @@ header ul li a:hover, header ul li a:active {
   -moz-opacity: 0;
   opacity: 0;
 }
-#file_select label {
+#upload #file_select label {
   overflow: hidden;
   padding: 0;
   float: left;
 }
-#file_select #file_button {
+#upload #file_select #file_button {
   display: inline-block;
   width: 350px;
   height: 80px;
   background-image: url("/img/upload_button.png");
   background-position: left top;
 }
-#file_select #file_button:hover {
+#upload #file_select #file_button:hover {
   background-position: left bottom;
 }
-
-#uploader_info {
+#upload #file_select #uploader_info {
   float: right;
   margin: 0;
-  padding: 10px 20px;
-  width: 570px;
+  padding: 10px;
+  width: 590px;
   height: 60px;
 }
-
-#extra_input {
+#upload #extra_input {
   position: relative;
   margin: 0;
 }
-#extra_input table tr td {
+#upload #extra_input table tr td {
   padding: .2em .3em;
 }
-#extra_input table tr td #filename {
+#upload #extra_input table tr td #filename {
   font-family: monospace;
 }
-#extra_input table tr td input {
+#upload #extra_input table tr td input {
   margin: 0;
   padding: .5em;
   border-radius: 4px;
-  border: 2px solid #bdc3c7;
+  border: 1px solid #bdc3c7;
 }
-#extra_input table tr td input:focus {
-  border: 2px solid #1abc9c;
+#upload #extra_input table tr td input:focus {
+  border-color: #09c4d9;
+  box-shadow: 0 0 2px #09c4d9;
 }
-#extra_input table tr td input#comment {
+#upload #extra_input table tr td input#comment {
   width: 300px;
 }
-#extra_input table tr td input#dlpass {
+#upload #extra_input table tr td input#dlpass {
   width: 150px;
 }
-#extra_input table tr td input#rmpass {
+#upload #extra_input table tr td input#rmpass {
   width: 150px;
 }
-#extra_input table tr td.explain {
+#upload #extra_input table tr td.explain {
   color: #717171;
   font-size: .9em;
 }
@@ -227,15 +234,13 @@ header ul li a:hover, header ul li a:active {
   border-radius: 4px;
   text-decoration: none;
 }
-
-.submit, .submit:hover, .submit:active, .submit:visited {
-  background: #3498db;
+.buttons a.submit, .buttons a.submit:hover, .buttons a.submit:active, .buttons a.submit:visited {
+  background: #1abc9c;
   color: #ffffff;
   font-weight: bold;
 }
-
-.clear, .clear:hover, .clear:active, .clear:visited {
-  background: #bdc3c7;
+.buttons a.clear, .buttons a.clear:hover, .buttons a.clear:active, .buttons a.clear:visited {
+  background: #7f8c8d;
   color: #ffffff;
   font-weight: bold;
 }
@@ -328,7 +333,7 @@ header ul li a:hover, header ul li a:active {
   width: 650px;
   height: 150px;
   margin: -75px 0 0 -325px;
-  background: #e3e3e3;
+  background: #ecf0f1;
   text-align: center;
 }
 

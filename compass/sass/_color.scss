@@ -8,9 +8,21 @@ $c_link: #20B4D2;
 
 // ヘッダー
 $c_header_bg: #34495E;
-$c_header_shadow: #AAAAAA;
+$c_header_shadow: #aaaaaa;
+$c_header_link: #EEEEEE;
 
-$c_failed_bg: #E74C3C;
-$c_failed_text: #FFFFFF;
+// 警告表示
+$c_warning_bg: #E74C3C;
+$c_warning_text: #FFFFFF;
+$c_warning_link: #FFFFFF;
 
+// 基本背景というか
 $c_info_bg: #ECF0F1;
+
+// inputタグ関連
+$c_input_border: #bdc3c7;
+$c_input_border_focus: #09C4D9;
+
+// ボタン
+$c_button_submit: #1abc9c;
+$c_button_clear: #7f8c8d;
